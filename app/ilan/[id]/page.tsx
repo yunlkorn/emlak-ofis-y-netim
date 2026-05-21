@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getListingById, getBrokerById, incrementViewCount } from "@/lib/db";
 import { notFound } from "next/navigation";
 import Header from "@/components/shared/Header";

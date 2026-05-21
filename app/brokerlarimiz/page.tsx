@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getBrokers } from "@/lib/db";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
