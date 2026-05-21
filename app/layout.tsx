@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000").replace(/^﻿/, "");
+
 export const metadata: Metadata = {
   title: {
     default: process.env.NEXT_PUBLIC_OFFICE_NAME ?? "Emlak Ofisi",
     template: `%s | ${process.env.NEXT_PUBLIC_OFFICE_NAME ?? "Emlak Ofisi"}`,
   },
   description: "Güvenilir emlak danışmanınız. Satılık ve kiralık ilanlar.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
-  ),
+  metadataBase: new URL(appUrl),
 };
 
 export default function RootLayout({
