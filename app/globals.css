@@ -1,20 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
-  --brand: #0f766e;
-  --brand-dark: #0d6560;
+  /* Brand — warm terracotta */
+  --c-brand:        oklch(56% 0.20 38);
+  --c-brand-hover:  oklch(50% 0.20 38);
+  --c-brand-light:  oklch(94% 0.05 38);
+  --c-brand-subtle: oklch(96% 0.03 38);
+
+  /* Surfaces */
+  --c-bg:           oklch(97.5% 0.008 72);
+  --c-surface:      oklch(99.5% 0.004 70);
+  --c-surface-2:    oklch(96.5% 0.009 72);
+
+  /* Borders */
+  --c-border:       oklch(91% 0.010 70);
+  --c-border-focus: oklch(56% 0.20 38);
+
+  /* Text */
+  --c-text:         oklch(15% 0.015 260);
+  --c-text-2:       oklch(40% 0.015 260);
+  --c-text-muted:   oklch(58% 0.010 260);
+  --c-text-subtle:  oklch(70% 0.008 260);
+
+  /* Sidebar */
+  --c-sidebar:      oklch(14% 0.025 38);
+  --c-sidebar-text: oklch(78% 0.01 38);
+  --c-sidebar-act:  oklch(56% 0.20 38);
+
+  /* Semantic */
+  --c-success:      oklch(54% 0.14 142);
+  --c-success-bg:   oklch(95% 0.05 142);
+  --c-warning:      oklch(68% 0.18 72);
+  --c-warning-bg:   oklch(96% 0.06 72);
+  --c-danger:       oklch(54% 0.22 22);
+  --c-danger-bg:    oklch(96% 0.05 22);
+  --c-info:         oklch(54% 0.18 240);
+  --c-info-bg:      oklch(95% 0.05 240);
+
+  /* Stage colors */
+  --stage-yeni:             oklch(56% 0.18 240);
+  --stage-yeni-bg:          oklch(94% 0.06 240);
+  --stage-iletisime:        oklch(50% 0.16 200);
+  --stage-iletisime-bg:     oklch(94% 0.05 200);
+  --stage-gorusme:          oklch(58% 0.18 72);
+  --stage-gorusme-bg:       oklch(95% 0.06 72);
+  --stage-teklif:           oklch(58% 0.20 45);
+  --stage-teklif-bg:        oklch(95% 0.07 45);
+  --stage-sozlesme:         oklch(54% 0.20 290);
+  --stage-sozlesme-bg:      oklch(94% 0.06 290);
+  --stage-kapandi:          oklch(54% 0.14 142);
+  --stage-kapandi-bg:       oklch(94% 0.05 142);
+  --stage-kaybedildi:       oklch(52% 0.22 22);
+  --stage-kaybedildi-bg:    oklch(95% 0.05 22);
+
+  /* Typography */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.7, 0, 0.84, 0);
+  --duration-1: 120ms;
+  --duration-2: 180ms;
+  --duration-3: 260ms;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06), 0 1px 1px oklch(0% 0 0 / 0.04);
+  --shadow-md: 0 4px 8px oklch(0% 0 0 / 0.08), 0 2px 3px oklch(0% 0 0 / 0.05);
+  --shadow-lg: 0 12px 24px oklch(0% 0 0 / 0.10), 0 4px 8px oklch(0% 0 0 / 0.06);
+  --shadow-brand: 0 4px 12px oklch(56% 0.20 38 / 0.30);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #fff;
-  color: #111827;
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+/* ── Admin utility classes ── */
+
+.admin-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--duration-1) var(--ease-out);
+  border: none;
+  text-decoration: none;
+}
+
+.admin-btn-primary {
+  background: var(--c-brand);
+  color: oklch(98% 0.01 38);
+  box-shadow: var(--shadow-brand);
+}
+.admin-btn-primary:hover {
+  background: var(--c-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px oklch(56% 0.20 38 / 0.36);
+}
+
+.admin-btn-ghost {
+  background: transparent;
+  color: var(--c-text-2);
+  border: 1px solid var(--c-border);
+}
+.admin-btn-ghost:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text);
+  border-color: oklch(82% 0.01 70);
+}
+
+.stage-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Score badge */
+.score-low    { background: oklch(92% 0.01 260); color: var(--c-text-muted); }
+.score-mid    { background: var(--c-info-bg);    color: var(--c-info); }
+.score-high   { background: var(--c-success-bg); color: var(--c-success); }
+
+/* Kanban card stale indicators */
+.stale-7  { border-color: var(--c-warning) !important; }
+.stale-14 { border-color: var(--c-danger)  !important; }
+
+/* Table base */
+.data-table { width: 100%; font-size: 13px; border-collapse: collapse; }
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-subtle);
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface-2);
+}
+.data-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr { transition: background var(--duration-1) var(--ease-out); }
+.data-table tbody tr:hover { background: var(--c-brand-subtle); }
+
+/* Form inputs */
+.admin-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  background: var(--c-surface);
+  color: var(--c-text);
+  transition: border-color var(--duration-1) var(--ease-out),
+              box-shadow var(--duration-1) var(--ease-out);
+  outline: none;
+}
+.admin-input:focus {
+  border-color: var(--c-brand);
+  box-shadow: 0 0 0 3px oklch(56% 0.20 38 / 0.12);
+}
+
+/* Sidebar active link */
+.nav-link { transition: all var(--duration-1) var(--ease-out); }
+.nav-link.active {
+  background: oklch(56% 0.20 38 / 0.15);
+  color: oklch(80% 0.12 38);
+}
+
+/* Fade-in for page load */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp var(--duration-3) var(--ease-out) both; }
+.fade-up-1 { animation-delay: 60ms; }
+.fade-up-2 { animation-delay: 120ms; }
+.fade-up-3 { animation-delay: 180ms; }
+.fade-up-4 { animation-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .fade-up-1, .fade-up-2, .fade-up-3, .fade-up-4 {
+    animation: none;
+  }
 }
